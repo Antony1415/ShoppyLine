@@ -22,6 +22,7 @@ const SearchBox = <T extends unknown>({
 }: SearchBoxhProps<T>): React.JSX.Element => {
   const [showContent, setShowContent] = useState(false)
   const searchBoxRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (showContent) {
@@ -35,6 +36,7 @@ const SearchBox = <T extends unknown>({
     const renderContent = (item: SearchBoxData<T>) => {
       const onClickContent = () => {
         onClick && onClick(item.label)
+        inputRef!.current!.value = item.label
         setShowContent(false)
       }
 
@@ -48,6 +50,7 @@ const SearchBox = <T extends unknown>({
     return (
       <div ref={searchBoxRef} className={`w-full h-fit relative`}>
         <InputSearch
+          inputRef={inputRef}
           className={`${className} ${showContent && 'border-b-0 rounded-b-[0px]'}`}
           onFocus={() => setShowContent(true)}
           {...props}

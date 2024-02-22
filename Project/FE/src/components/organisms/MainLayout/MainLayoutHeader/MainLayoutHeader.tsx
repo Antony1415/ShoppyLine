@@ -1,31 +1,28 @@
 'use client'
-import { Button, Icon, Logo, Text } from '@/components/atoms'
+import { Button, Logo, Text } from '@/components/atoms'
 import { SearchBox } from '@/components/molecules'
-import useSearch from '@/hooks/useSearch'
 import React, { useState } from 'react'
 
 const MainLayoutHeader = () => {
-    const [query, setQuery] = useState<string>('')
-    const { data } = useSearch({ query })
-    const dummySearchBoxContent: { value: number, label: string }[] = [
-        { value: 1, label: 'Product 1' },
-        { value: 2, label: 'Product 2' },
-        { value: 3, label: 'Product 3' },
+    const dummySearchBoxContent: { value: string, label: string }[] = [
+        { value: 'Product 1', label: 'Product 1' },
+        { value: 'Product 2', label: 'Product 2' },
+        { value: 'Product 3', label: 'Product 3' },
     ]
 
     return (
-        <div className='flex items-center px-[75px] mt-7'>
+        <div className='flex items-center px-[100px] mt-7'>
             <div className='flex-[1] flex items-center'>
                 <Logo />
             </div>
 
             <div className='flex-[3] flex flex-col gap-2'>
-                <SearchBox<number>
+                <SearchBox<string>
                     className='rounded-[10px]'
                     data={dummySearchBoxContent}
-                    value={query}
-                    onClick={(val) => setQuery(val)}
-                    onChange={(e) => setQuery(e.target.value)}
+                    onClick={(val) => console.log("VALl", val)
+                    }
+                    onChange={(e) => console.log("AA", e.target.value)}
                 />
 
                 <ul className='flex gap-5 relative '>

@@ -1,3 +1,3 @@
-import useSearchProduct from './useSearch';
+import useDebounce from './useDebounce';
 
-export { useSearchProduct }
+export { useDebounce }

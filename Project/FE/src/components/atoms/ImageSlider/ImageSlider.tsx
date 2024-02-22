@@ -4,7 +4,7 @@ import { StaticImageData } from 'next/image'
 import styles from './ImageSlide.module.css'
 import { Icon } from '@/components/atoms'
 
-interface ImageSliderProps {
+export interface ImageSliderProps {
     className?: string,
     images: StaticImageData[],
     autoSlide?: boolean,

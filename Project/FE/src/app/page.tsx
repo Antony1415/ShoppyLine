@@ -5,7 +5,7 @@ import React from 'react'
 const page = () => {
   return (
     <MainLayout>
-      <div className='px-[75px]'>
+      <div className='px-[100px]'>
         <HomeBanner />
       </div>
     </MainLayout>

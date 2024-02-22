@@ -1,6 +1,7 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { LegacyRef, useRef } from 'react'
 import { Icon } from '@/components/atoms';
+import { useDebounce } from '@/hooks';
 
 export interface InputSearchProps {
     className?: string;
@@ -13,7 +14,10 @@ export interface InputSearchProps {
         width: number,
         height: number,
     },
+    inputRef?: React.RefObject<HTMLInputElement>,
     seperator?: boolean,
+    debounce?: boolean,
+    delay?: number,
     onChange?: React.ChangeEventHandler<HTMLInputElement>,
     onFocus?: React.FocusEventHandler<HTMLInputElement>,
     onBlur?: React.FocusEventHandler<HTMLInputElement>,
@@ -26,13 +30,16 @@ const InputSearch = ({
     placeholder = 'Search...',
     value,
     iconSize = { width: 20, height: 25 },
+    inputRef,
+    delay,
+    debounce = true,
     seperator = true,
-    onChange,
+    onChange = () => { },
     onFocus,
     onBlur,
     ...props
 }: InputSearchProps): React.JSX.Element => {
-
+    const debounceTimeout = useRef<ReturnType<typeof setTimeout>>(null)
     const position = () => {
         switch (iconPosition) {
             case 'left':
@@ -43,6 +50,10 @@ const InputSearch = ({
     }
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (debounce) {
+            return useDebounce(debounceTimeout, onChange && (() => onChange(e)), delay)
+        }
+
         onChange && onChange(e)
     }
 
@@ -52,6 +63,7 @@ const InputSearch = ({
                 <Icon className={`${seperator && 'border-r-[1px] border-[#e1e3e4] pr-4'}`} src='/assets/svg/search_icon.svg' alt='Searh Icon' size={iconSize} />
 
                 <input
+                    ref={inputRef}
                     className='w-full h-full outline-none'
                     placeholder={placeholder}
                     onBlur={onBlur}
