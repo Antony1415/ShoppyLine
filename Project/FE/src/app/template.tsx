@@ -1,15 +1,11 @@
 import React from 'react'
 
 interface TemplateProps {
-    children?: React.ReactNode
+    children: React.JSX.Element
 }
 
 const template = ({ children }: TemplateProps): React.JSX.Element => {
-    return (
-        <>
-            {children}
-        </>
-    )
+    return children
 }
 
 export default template
