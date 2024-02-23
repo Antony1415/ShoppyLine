@@ -9,16 +9,17 @@ jobs:
     name: Install Packages
     runs-on: ubuntu-latest
     steps:
-    # - name: Checkout Code
-    #   uses: actions/checkout@v3
+    # git clone current Repository to Cloud Computing Folder
+    - name: Checkout Code
+      uses: actions/checkout@v3
     # - name: CD Project
     #   run: cd Project/
     - name: Echo CD 1
-      run: ls .
+      run: ls Project/
     # - name: CD FE
     #   run: cd FE/
-    # - name: Echo CD 2
-    #   run: ls .
+    - name: Echo CD 2
+      run: ls .
     # - name: Install Packages
     #   run: npm install
     # - name: Building Project
