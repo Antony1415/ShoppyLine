@@ -2,7 +2,7 @@ name: Build ShoppyLine Web Application
 
 on:
   push:
-    branches: 'main'
+    branches: ['main']
 
 jobs:
   build-project:
