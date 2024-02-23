@@ -1,0 +1,21 @@
+name: Build ShoppyLine Web Application
+
+on:
+  push:
+    branches: 'main'
+
+jobs:
+  build-project:
+    name: Install Packages
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    - name: Install Packages
+      run:
+        - npm install
+        - npm install firebase
+    - name: Building Project
+      run:
+        - npm run build
+        - ls
