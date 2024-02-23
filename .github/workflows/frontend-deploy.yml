@@ -15,7 +15,7 @@ jobs:
     # - name: CD Project
     #   run: cd Project/
     - name: Echo CD 1
-      run: ls Project/
+      run: ls Project/FE/
     # - name: CD FE
     #   run: cd FE/
     - name: Echo CD 2
