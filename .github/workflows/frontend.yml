@@ -9,8 +9,8 @@ jobs:
     name: Install Packages
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+    # - name: Checkout Code
+    #   uses: actions/checkout@v3
     # - name: CD Project
     #   run: cd Project/
     - name: Echo CD 1
