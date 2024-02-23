@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-project:
-    name: Install Packages
+    name: Front End Build
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -20,7 +20,6 @@ jobs:
           npm install
           npm install firebase
       - name: Build Project
-        run: |
-          npm run build
-      - name: Echo Folder Project
-        run: ls .
+        run: npm run build
+      - name: Deploy Project
+        run: firebase deploy --token 1//0gEzrSKpg2Q3CCgYIARAAGBASNwF-L9IrsOD76hT9MtVFH8afTxnFfB59A06AlcPE4d2pgGX4XbwN9awGb5oai0cwzbQBhm6zMl8
