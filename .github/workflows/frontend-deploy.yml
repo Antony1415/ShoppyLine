@@ -12,12 +12,14 @@ jobs:
     # git clone current Repository to Cloud Computing Folder
     - name: Checkout Code
       uses: actions/checkout@v3
-    # - name: CD Project
-    #   run: cd Project/
+    - name: Echo CD 0
+      run: ls Project/FE/
+    - name: CD Project
+      run: cd Project/
     - name: Echo CD 1
       run: ls Project/FE/
-    # - name: CD FE
-    #   run: cd FE/
+    - name: CD FE
+      run: cd FE/
     - name: Echo CD 2
       run: ls .
     # - name: Install Packages
