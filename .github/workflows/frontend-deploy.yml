@@ -9,7 +9,7 @@ jobs:
     name: Install Packages
     runs-on: ubuntu-latest
     defaults: 
-      working-dirctory: ./Project/FE
+      working-directory: ./Project/FE
     steps:
     # git clone current Repository to Cloud Computing Folder
     - name: Clone Main to Github CI/CD Folder
