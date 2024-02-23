@@ -11,14 +11,14 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
-    - name: CD Project
-      run: cd Project/
+    # - name: CD Project
+    #   run: cd Project/
     - name: Echo CD 1
-      run: ls
+      run: ls .
     # - name: CD FE
     #   run: cd FE/
-    - name: Echo CD 2
-      run: ls .
+    # - name: Echo CD 2
+    #   run: ls .
     # - name: Install Packages
     #   run: npm install
     # - name: Building Project
