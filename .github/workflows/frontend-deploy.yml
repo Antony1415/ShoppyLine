@@ -12,17 +12,15 @@ jobs:
       run:
         working-directory: ./Project/FE
     steps:
-    # git clone current Repository to Cloud Computing Folder
-    - name: Clone Main to Github CI/CD Folder
-      uses: actions/checkout@v3
-    - name: Echo CD 1
-      run: |
-        ls .
-        ls .
-    # - name: Install Packages
-    #   run: npm install
-    # - name: Building Project
-    #   run: npm run build
-    # - name: Echo
-    #   run: ls
-    
+      # git clone current Repository to Cloud Computing Folder
+      - name: Clone Main to Github CI/CD Folder
+        uses: actions/checkout@v3
+      - name: Install Packages
+        run: |
+          npm install
+          npm install firebase
+      - name: Build Project
+        run: |
+          npm run build
+      - name: Echo Folder Project
+        run: ls .
