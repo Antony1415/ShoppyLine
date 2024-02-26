@@ -1,5 +1,5 @@
 'use client'
-import React, { LegacyRef, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Icon } from '@/components/atoms';
 import { useDebounce } from '@/hooks';
 

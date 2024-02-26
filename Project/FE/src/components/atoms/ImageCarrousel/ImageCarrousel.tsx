@@ -1,17 +1,18 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { StaticImageData } from 'next/image'
-import styles from './ImageSlide.module.css'
+import styles from './ImageCarrousel.module.css'
 import { Icon } from '@/components/atoms'
 
-export interface ImageSliderProps {
-    className?: string,
-    images: StaticImageData[],
-    autoSlide?: boolean,
-    delay?: number,
+export interface ImageCarrouselProps {
+    className?: string;
+    images: StaticImageData[];
+    autoSlide?: boolean;
+    delay?: number;
+    children?: React.ReactNode;
 }
 
-const ImageSlider = ({ className, images, autoSlide = true, delay = 3000 }: ImageSliderProps): React.JSX.Element => {
+const ImageCarrousel = ({ className, images, autoSlide = false, delay = 3000, children }: ImageCarrouselProps): React.JSX.Element => {
     const [currentImage, setCurrentImage] = useState<number>(0)
 
     const showNextImage = () => {
@@ -39,7 +40,7 @@ const ImageSlider = ({ className, images, autoSlide = true, delay = 3000 }: Imag
     }, [currentImage])
 
     return (
-        <div className={`${className} relative w-full h-full`}>
+        <div className={`${className} relative w-full h-fit`}>
             <Icon
                 className={`${styles.ImageSlide_button} ${styles.ImageSlide_button___leftArrow}`}
                 size={{ width: 10, height: 15 }}
@@ -64,8 +65,8 @@ const ImageSlider = ({ className, images, autoSlide = true, delay = 3000 }: Imag
                     )
                 })}
             </div>
-        </div>
+        </div >
     )
 }
 
-export default ImageSlider
+export default ImageCarrousel

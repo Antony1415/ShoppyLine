@@ -4,7 +4,7 @@ import React from 'react'
 
 export interface IconProps {
     className?: string,
-    size: {
+    size?: {
         width: number,
         height: number,
     },
@@ -15,7 +15,10 @@ export interface IconProps {
 
 const Icon = ({
     className,
-    size,
+    size = {
+        width: 25,
+        height: 25
+    },
     src = '',
     alt = 'Something Error',
     onClick

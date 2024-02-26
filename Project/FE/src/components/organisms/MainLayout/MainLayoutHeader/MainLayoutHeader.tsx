@@ -11,7 +11,7 @@ const MainLayoutHeader = () => {
     ]
 
     return (
-        <div className='flex items-center px-[100px] mt-7'>
+        <div className='flex items-center px-[100px] py-7 sticky top-0 z-50 bg-white'>
             <div className='flex-[1] flex items-center'>
                 <Logo />
             </div>
@@ -20,8 +20,7 @@ const MainLayoutHeader = () => {
                 <SearchBox<string>
                     className='rounded-[10px]'
                     data={dummySearchBoxContent}
-                    onClick={(val) => console.log("VALl", val)
-                    }
+                    onClick={(val) => console.log("VALl", val)}
                     onChange={(e) => console.log("AA", e.target.value)}
                 />
 
