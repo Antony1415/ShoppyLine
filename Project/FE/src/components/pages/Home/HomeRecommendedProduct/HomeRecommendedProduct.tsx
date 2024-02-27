@@ -1,16 +1,7 @@
 'use client'
 import { InfiniteScrollProduct } from '@/components/organisms'
+import { Product } from '@/utils/type'
 import React, { useEffect, useState } from 'react'
-
-type Product = {
-    id: string;
-    title: string;
-    description: string;
-    category: string;
-    price: number;
-    rating: number;
-    images: string[];
-}
 
 const HomeRecommendedProduct = (): React.JSX.Element => {
     const [pageNumber, setPageNumber] = useState(0)
@@ -35,10 +26,10 @@ const HomeRecommendedProduct = (): React.JSX.Element => {
             });
 
     }, [pageNumber])
-    console.log("PR", product);
 
     return (
-        <div className='h-fit flex flex-col gap-3'>
+        <div className='flex flex-col gap-4'>
+            <h1 className='font-semibold text-[25px]'>Recommended For You</h1>
             <InfiniteScrollProduct<Product>
                 data={product}
                 callback={() => setPageNumber(prev => prev + 1)}

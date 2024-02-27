@@ -11,7 +11,7 @@ const MainLayoutHeader = () => {
     ]
 
     return (
-        <div className='flex items-center px-[100px] py-7 sticky top-0 z-50 bg-white'>
+        <div className='flex items-center px-[100px] py-5 sticky top-0 z-50 bg-white'>
             <div className='flex-[1] flex items-center'>
                 <Logo />
             </div>
