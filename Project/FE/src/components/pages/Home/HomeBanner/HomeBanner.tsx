@@ -12,7 +12,7 @@ const HomeBanner = () => {
   ]
 
   return (
-    <div className='flex shrink-0 h-[300px] w-full gap-2 rounded-[3px] overflow-hidden'>
+    <div className='flex shrink-0 h-[300px] w-full gap-3 rounded-[3px] overflow-hidden'>
       <ImageCarrousel autoSlide={true} className='flex-[3]' data={images} />
 
       <div className='flex flex-col flex-[2] gap-2'>

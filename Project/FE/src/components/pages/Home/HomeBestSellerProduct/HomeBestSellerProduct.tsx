@@ -21,7 +21,9 @@ const HomeBestSellerProduct = (): React.JSX.Element => {
                         images
                     }
                 })
-                const array: Product[][] = Array.from({ length: 4 }, (_, index) => mapData.slice(index * 6, (index + 1) * 6))
+                const array: Product[][] = Array.from({ length: 4 }, (_, index) => {
+                    return mapData.slice(index * 6, (index + 1) * 6)
+                })
                 setProduct(array)
             });
     }, [])

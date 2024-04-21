@@ -1,9 +1,13 @@
 'use client'
 import { Button, Logo, Text } from '@/components/atoms'
 import { SearchBox } from '@/components/molecules'
-import React, { useState } from 'react'
+import { useAppDispatch } from '@/redux-toolkit'
+import { setShowModal } from '@/redux-toolkit/app/appSlice'
+import React from 'react'
 
 const MainLayoutHeader = () => {
+    const dispatch = useAppDispatch();
+    
     const dummySearchBoxContent: { value: string, label: string }[] = [
         { value: 'Product 1', label: 'Product 1' },
         { value: 'Product 2', label: 'Product 2' },
@@ -32,7 +36,7 @@ const MainLayoutHeader = () => {
             </div>
 
             <div className='flex-[1] flex gap-5 items-start h-full'>
-                <Button className='ml-auto' disabled={true}>
+                <Button className='ml-auto' onClick={() => {dispatch(setShowModal(true))}}>
                     <Text type='span' text='MASUK' />
                 </Button>
                 <Button>

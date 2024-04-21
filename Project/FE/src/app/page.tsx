@@ -1,5 +1,5 @@
 import { MainLayout } from '@/components/layouts'
-import { HomeBanner, HomeBestSellerProduct, HomeRecommendedProduct } from '@/components/pages'
+import { AuthModal, HomeBanner, HomeBestSellerProduct, HomeRecommendedProduct } from '@/components/pages'
 import React from 'react'
 
 const page = () => {
@@ -12,6 +12,8 @@ const page = () => {
 
         <HomeRecommendedProduct />
       </div>
+
+      <AuthModal />
     </MainLayout>
   )
 }

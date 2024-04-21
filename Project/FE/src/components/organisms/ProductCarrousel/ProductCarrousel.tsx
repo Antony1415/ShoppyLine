@@ -8,12 +8,12 @@ export interface ProductCarrouselProps {
 
 const ProductCarrousel = ({ data }: ProductCarrouselProps): React.JSX.Element => {
     const renderCarrouselElement = () => {
-        return data.map((products: Product[]) => {
+        return data.map((products: Product[], index) => {
             return (
-                <div className='flex h-full gap-5'>
+                <div className='grid grid-cols-6 h-full gap-x-5' key={index}>
                     {products.map((product: Product) => {
                         return (
-                            <div className='flex flex-col h-full flex-1'>
+                            <div className='flex flex-col h-full' key={product.id}>
                                 <img className='w-full h-[150px] rounded-[10px]' src={product.images[0]} />
                                 <div className='flex flex-col gap-1'>
                                     <h1>{product.title}</h1>
@@ -26,8 +26,6 @@ const ProductCarrousel = ({ data }: ProductCarrouselProps): React.JSX.Element =>
             )
         })
     }
-    console.log("TEST", data);
-
 
     return (
         <ImageCarrousel data={renderCarrouselElement()} />

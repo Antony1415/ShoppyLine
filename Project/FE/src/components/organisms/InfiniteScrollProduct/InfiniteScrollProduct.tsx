@@ -17,7 +17,7 @@ const InfiniteScrollProduct = <T extends Product>({ className, data, callback }:
                 if (entries[0].isIntersecting) {
                     callback && callback()
                 }
-            }, { rootMargin: '250px' })
+            }, { rootMargin: '250px' }) 
             observer.observe((lastElementRef.current as unknown) as Element)
 
             return () => observer.disconnect()

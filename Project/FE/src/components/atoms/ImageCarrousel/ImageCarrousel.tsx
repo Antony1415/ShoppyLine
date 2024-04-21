@@ -53,11 +53,12 @@ const ImageCarrousel = ({ className, data, autoSlide = false, delay = 3000 }: Im
             />
 
             <div className='flex h-full w-full overflow-hidden'>
-                {data.map((item) => {
+                {data.map((item, index) => {
                     return (
                         <div
                             className={styles.ImageCarrousel_container}
                             style={{ translate: `${-100 * currentImage}%` }}
+                            key={index}
                         >
                             {typeof item === 'string'
                                 ? (
