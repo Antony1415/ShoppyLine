@@ -1,19 +1,20 @@
-import { configureStore } from '@reduxjs/toolkit'
-import appSlice from './app/appSlice'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
+import { appSlice, modalSlice } from '@/redux-toolkit';
 
 const persistConfig = {
     key: 'app',
     storage,
 }
 
-const persistedAppSlice = persistReducer(persistConfig, appSlice)
+const reducer = combineReducers({
+    app: persistReducer(persistConfig, appSlice),
+    modal: modalSlice
+})
 
 export const store = configureStore({
-    reducer: {
-        app: persistedAppSlice
-    },
+    reducer: reducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({ serializableCheck: false }),
 })

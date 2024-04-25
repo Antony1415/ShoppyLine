@@ -1,12 +1,11 @@
 "use client"
 import { useAppDispatch, useAppSelector } from '@/redux-toolkit';
-import { setShowModal, showModalState } from '@/redux-toolkit/app/appSlice';
+import { setShowModal, showModalState } from '@/redux-toolkit/modal/modalSlice';
 import { handleClickOutsideComponent } from '@/utils/func';
 import React, { useEffect, useRef, useState } from 'react'
 
 export interface ModalProps {
     children?: React.ReactNode
-    showModal: boolean;
     className?: string;
 }
 
@@ -28,7 +27,7 @@ const Modal = ({ children, className }: ModalProps): React.JSX.Element | null =>
     }
 
     return (
-        <div className='fixed z-[999] h-full w-full bg-slate-800/30 flex items-center justify-center'>
+        <div className='fixed z-[999] h-full w-full bg-slate-800/40 flex items-center justify-center'>
             <div className={`${className} bg-white rounded-[5px] w-fit h-fit py-5 px-5`} ref={modalRef}>
                 {children}
             </div>

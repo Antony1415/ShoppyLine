@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { store, persistor } from '@/redux-toolkit'
+import { store, persistor} from '@/redux-toolkit'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react';
 interface TemplateProps {

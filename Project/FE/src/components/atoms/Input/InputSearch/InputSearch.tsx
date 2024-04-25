@@ -6,21 +6,18 @@ import { useDebounce } from '@/hooks';
 export interface InputSearchProps {
     className?: string;
     iconPosition?: 'left' | 'right';
-    control?: any
-    name?: string,
-    placeholder?: string,
-    value?: string,
+    control?: any;
+    name?: string;
+    placeholder?: string;
     iconSize?: {
-        width: number,
-        height: number,
-    },
-    inputRef?: React.RefObject<HTMLInputElement>,
-    seperator?: boolean,
-    debounce?: boolean,
-    delay?: number,
-    onChange?: React.ChangeEventHandler<HTMLInputElement>,
-    onFocus?: React.FocusEventHandler<HTMLInputElement>,
-    onBlur?: React.FocusEventHandler<HTMLInputElement>,
+        width: number;
+        height: number;
+    };
+    inputRef?: React.RefObject<HTMLInputElement>;
+    seperator?: boolean;
+    debounce?: boolean;
+    delay?: number;
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 const InputSearch = ({
     className,
@@ -28,17 +25,14 @@ const InputSearch = ({
     control,
     name,
     placeholder = 'Search...',
-    value,
     iconSize = { width: 20, height: 25 },
     inputRef,
     delay,
     debounce = true,
     seperator = true,
     onChange = () => { },
-    onFocus,
-    onBlur,
     ...props
-}: InputSearchProps): React.JSX.Element => {
+}: InputSearchProps & React.HTMLProps<HTMLInputElement>): React.JSX.Element => {
     const debounceTimeout = useRef<ReturnType<typeof setTimeout>>(null)
     const position = () => {
         switch (iconPosition) {
@@ -66,10 +60,7 @@ const InputSearch = ({
                     ref={inputRef}
                     className='w-full h-full outline-none'
                     placeholder={placeholder}
-                    onBlur={onBlur}
-                    onFocus={onFocus}
                     onChange={onChangeHandler}
-                    value={value}
                     {...props}
                 />
             </div>

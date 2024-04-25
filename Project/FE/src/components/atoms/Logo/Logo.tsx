@@ -1,9 +1,13 @@
 import React from 'react'
 import { Text } from '@/components/atoms'
 
-const Logo = () => {
+interface LogoProps {
+    className?: string;
+}
+
+const Logo = ({ className }: LogoProps): React.JSX.Element => {
     return (
-        <Text className='font-bold text-[20px] text-green-600' type='span' text='ＳｈｏｐｐｙＬＩＮＥ' />
+        <Text className={`${className} font-bold text-[20px] text-green-600`} type='h1' text='ＳｈｏｐｐｙＬＩＮＥ' />
     )
 }
 

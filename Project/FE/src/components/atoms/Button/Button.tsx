@@ -13,7 +13,7 @@ const Button = ({
     children,
     onClick,
     disabled
-}: ButtonProps): React.JSX.Element => {
+}: ButtonProps & React.HTMLProps<HTMLButtonElement>): React.JSX.Element => {
     const renderButton = () => {
         return (
             <button
