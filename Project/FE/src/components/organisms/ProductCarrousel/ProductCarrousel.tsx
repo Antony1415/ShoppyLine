@@ -10,13 +10,13 @@ const ProductCarrousel = ({ data }: ProductCarrouselProps): React.JSX.Element =>
     const renderCarrouselElement = () => {
         return data.map((products: Product[], index) => {
             return (
-                <div className='grid grid-cols-6 h-full gap-x-5' key={index}>
+                <div className='grid grid-cols-7 h-full gap-x-5 px-4' key={index}>
                     {products.map((product: Product) => {
                         return (
-                            <div className='flex flex-col h-full' key={product.id}>
+                            <div className='flex flex-col h-full gap-2 rounded-[10px]' key={product.id}>
                                 <img className='w-full h-[150px] rounded-[10px]' src={product.images[0]} />
-                                <div className='flex flex-col gap-1'>
-                                    <h1>{product.title}</h1>
+                                <div className='flex flex-col gap-1 px-3 pb-2'>
+                                    <h1 className='line-clamp-2 font-semibold'>{product.title}</h1>
                                     <p className='text-red-600'>Rp. {product.price}</p>
                                 </div>
                             </div>

@@ -29,8 +29,9 @@ const HomeRecommendedProduct = (): React.JSX.Element => {
 
     return (
         <div className='flex flex-col gap-4'>
-            <h1 className='font-semibold text-[25px]'>Recommended For You</h1>
+            <h1 className='font-semibold text-[25px] bg-white p-2 px-4 border-b-black/50 border-b-[1px]'>Recommended For You</h1>
             <InfiniteScrollProduct<Product>
+                className={'px-4'}
                 data={product}
                 callback={() => setPageNumber(prev => prev + 1)}
             />

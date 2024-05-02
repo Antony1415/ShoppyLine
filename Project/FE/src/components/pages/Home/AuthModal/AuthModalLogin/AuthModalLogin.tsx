@@ -1,20 +1,53 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Icon, Input, Text } from '@/components/atoms'
 
 interface AuthModalLoginProps {
-  onSubmitLogin: (e: React.MouseEvent<HTMLButtonElement>) => void
   onClickRegister: () => void
 }
 
-const AuthModalLogin = ({ onSubmitLogin, onClickRegister }: AuthModalLoginProps): React.JSX.Element => {
+const AuthModalLogin = ({ onClickRegister }: AuthModalLoginProps): React.JSX.Element => {
+  const [loginForm, setLoginForm] = useState({
+    email: '',
+    password: ''
+  })
+
+  const onSubmitLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+    fetch('http://localhost:8080/login', {
+      method: 'POST',
+      body: JSON.stringify(loginForm),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(res => res.json()).then((data) => {
+      const { role, email, fullName, id, userImage } = data.payload;
+      const cookie = {
+        id,
+        email,
+        fullName,
+        userImage,
+        role,
+      }
+
+      document.cookie = "auth=" + JSON.stringify(cookie);
+    })
+  }
+
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setLoginForm(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
   return (
     <>
       <Text type='h1' text='Sign In' className='text-[34px]' />
       <Text type='h3' text="Welcome to our E-Commerce Platform." className='text-[14px]' />
 
-      <Input className='!outline-blue-500/50 py-3 border-[#B4B4B3] bg-[#F1F6F5] mt-auto' placeholder='Email' />
-      <Input className='!outline-blue-500/50 py-3 border-[#B4B4B3] bg-[#F1F6F5] mt-3' placeholder='Password' type='password' />
+      <Input name='email' className='!outline-blue-500/50 py-3 border-[#B4B4B3] bg-[#F1F6F5] mt-auto' onChange={onChangeInput} placeholder='Email' />
+      <Input name='password' className='!outline-blue-500/50 py-3 border-[#B4B4B3] bg-[#F1F6F5] mt-3' onChange={onChangeInput} placeholder='Password' type='password' />
 
       <Button className='mt-5 bg-[#5BBCFF] border-none' onClick={onSubmitLogin}>
         <Text type='h1' text='Sign In' />

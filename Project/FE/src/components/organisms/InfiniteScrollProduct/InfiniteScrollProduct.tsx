@@ -17,35 +17,39 @@ const InfiniteScrollProduct = <T extends Product>({ className, data, callback }:
                 if (entries[0].isIntersecting) {
                     callback && callback()
                 }
-            }, { rootMargin: '250px' }) 
+            }, { rootMargin: '250px' })
             observer.observe((lastElementRef.current as unknown) as Element)
 
             return () => observer.disconnect()
         }
     }, [data])
 
+    const onClickProduct = () => {
+        
+    }
+
     return (
         <div className={`${className} grid grid-cols-6 gap-x-6 gap-y-6`}>
             {data.map((product, index) => {
                 if (data.length - 1 === index) {
                     return (
-                        <div ref={lastElementRef} key={product.id} className='flex flex-col items-center gap-2'>
+                        <div ref={lastElementRef} key={product.id} onClick={onClickProduct} className='flex flex-col items-center gap-2 bg-white rounded-[5px] overflow-hidden'>
                             <div className='flex'>
-                                <img src={product.images[0]} width={300} height={150} />
+                                <img className='w-full h-[150px]' src={product.images[0]} />
                             </div>
-                            <div className='fex flex-ol'>
-                                <h1>{product.title}</h1>
-                                <p>{product.description}</p>
+                            <div className='fex flex-col px-3 pb-2'>
+                                <h1 className='line-clamp-2 font-semibold'>{product.title}</h1>
+                                <h2 className='text-red-600'>Rp. {product.price}</h2>
                             </div>
                         </div>
                     )
                 }
                 return (
-                    <div key={product.id} className='flex flex-col gap-2'>
-                        <img className='w-full h-[200px] rounded-[10px]' src={product.images[0]} />
+                    <div key={product.id} onClick={onClickProduct} className='flex flex-col gap-2 bg-white rounded-[5px] overflow-hidden'>
+                        <img className='w-full h-[150px]' src={product.images[0]} />
 
-                        <div className='flex flex-col gap-1'>
-                            <h1>{product.title}</h1>
+                        <div className='flex flex-col gap-1 px-3 pb-2'>
+                            <h1 className='line-clamp-2 font-semibold'>{product.title}</h1>
                             <h2 className='text-red-600'>Rp. {product.price}</h2>
                         </div>
                     </div>

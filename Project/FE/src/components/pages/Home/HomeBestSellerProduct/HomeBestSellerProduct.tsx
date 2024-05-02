@@ -21,16 +21,16 @@ const HomeBestSellerProduct = (): React.JSX.Element => {
                         images
                     }
                 })
-                const array: Product[][] = Array.from({ length: 4 }, (_, index) => {
-                    return mapData.slice(index * 6, (index + 1) * 6)
+                const array: Product[][] = Array.from({ length: 3 }, (_, index) => {
+                    return mapData.slice(index * 7, (index + 1) * 7)
                 })
                 setProduct(array)
             });
     }, [])
 
     return (
-        <div className='flex flex-col gap-4'>
-            <h1 className='font-semibold text-[25px]'>Best Seller Product</h1>
+        <div className='flex flex-col gap-5 bg-white py-3 rounded-[2px]'>
+            <h1 className='font-semibold text-[25px] pb-2 px-4 border-b-black/50 border-b-[2px]'>Best Seller Product</h1>
             <ProductCarrousel data={product} />
         </div>
     )

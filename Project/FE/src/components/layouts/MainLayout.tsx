@@ -16,7 +16,7 @@ const MainLayout = ({ children }: MainLayoutProps): React.JSX.Element => {
     }, [])
 
     return (
-        <div className='flex flex-col h-fit'>
+        <div className='flex flex-col h-fit bg-[#f1f2f2] gap-5'>
             <MainLayoutHeader />
             {children}
         </div>

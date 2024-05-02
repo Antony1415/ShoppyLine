@@ -9,5 +9,4 @@ public class ShoppyLineApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ShoppyLineApplication.class, args);
 	}
-
 }

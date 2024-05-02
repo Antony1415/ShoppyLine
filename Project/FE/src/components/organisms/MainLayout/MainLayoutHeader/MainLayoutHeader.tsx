@@ -7,6 +7,8 @@ import React, { useState } from 'react'
 
 const MainLayoutHeader = () => {
     const dispatch = useAppDispatch();
+    const cookie = ('; '+ document.cookie).split(`; auth=`).pop()!.split(';')[0]
+    const user = cookie ? JSON.parse(cookie) : null;
 
     const dummySearchBoxContent: { value: string, label: string }[] = [
         { value: 'Product 1', label: 'Product 1' },
@@ -35,6 +37,10 @@ const MainLayoutHeader = () => {
         setDummySearch(filterData)
     }
 
+    const logout = () => {
+
+    }
+
     return (
         <div className='flex items-center px-[100px] py-5 sticky top-0 z-50 bg-white'>
             <Logo className='flex-[1]' />
@@ -54,15 +60,26 @@ const MainLayoutHeader = () => {
                 </ul>
             </div>
 
-            <div className='flex-[1] flex gap-5 h-full'>
-                <Button className='ml-auto' onClick={() => { dispatch(setShowModal(true)) }}>
-                    <Text type='span' text='MASUK' />
-                </Button>
-                <Button>
-                    <Text type='span' text='DAFTAR' />
-                </Button>
-            </div>
-        </div>
+            {user ? (
+                <div className='flex-[1] flex gap-5 h-full'>
+                    <Button className='ml-auto' onClick={() => { dispatch(setShowModal(true)) }}>
+                        <Text type='span' text={user.fullName} />
+                    </Button>
+                    <Button onClick={logout}>
+                        <Text type='span' text='KELUAR' />
+                    </Button>
+                </div >
+            ) : (
+                <div className='flex-[1] flex gap-5 h-full'>
+                    <Button className='ml-auto' onClick={() => { dispatch(setShowModal(true)) }}>
+                        <Text type='span' text='MASUK' />
+                    </Button>
+                    <Button>
+                        <Text type='span' text='DAFTAR' />
+                    </Button>
+                </div >
+            )}
+        </div >
     )
 }
 
