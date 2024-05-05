@@ -3,6 +3,15 @@ import { MainLayout } from '@/components/layouts';
 import { ProductDetailCarrousel, ProductDetailInformation } from '@/components/pages';
 import { Product } from '@/utils/type';
 
+export async function generateStaticParams() {
+  const response = await fetch(`https://dummyjson.com/products`)
+  const product = await response.json();
+
+  return product.products.map((product: Product) => ({
+    id: product.id.toString()
+  }))
+}
+
 async function getBestSellerProduct(productId: string) {
   const res = await fetch(`https://dummyjson.com/products/${productId}`);
 
@@ -11,7 +20,6 @@ async function getBestSellerProduct(productId: string) {
 
 const page = async ({ params }: { params: { id: string } }) => {
   const product: Product = await getBestSellerProduct(params.id);
-  console.log("product: ", product);
 
   return (
     <MainLayout>

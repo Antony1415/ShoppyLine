@@ -1,4 +1,4 @@
-import { ProductDetailProps } from './ProductDetailCarrousel';
+import { ProductDetailCarrouselProps } from './ProductDetailCarrousel';
 
 export { default as ProductDetailCarrousel } from './ProductDetailCarrousel';
-export type { ProductDetailProps };
+export type { ProductDetailCarrouselProps };

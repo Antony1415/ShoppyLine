@@ -8,7 +8,6 @@ export interface ProductDetailCarrouselProps {
 
 const ProductDetail = ({ images }: ProductDetailCarrouselProps): React.JSX.Element => {
   const [selectedImage, setSelectedImage] = useState<string>(images[0])
-  console.log("selectedImage", selectedImage);
 
   const renderCarrouselElement = () => {
     const sliceImage = Array.from({ length: (images.length % 4 === 0 ? (images.length / 4) : (Math.ceil(images.length / 4))) }, (_, index) => {

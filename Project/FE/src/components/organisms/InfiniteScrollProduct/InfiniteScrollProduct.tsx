@@ -35,7 +35,7 @@ const InfiniteScrollProduct = <T extends Product>({ className, data, callback }:
             {data.map((product, index) => {
                 if (data.length - 1 === index) {
                     return (
-                        <div ref={lastElementRef} key={product.id} onClick={() => onClickProduct(product.id)} className='flex flex-col items-center gap-2 bg-white rounded-[5px] overflow-hidden'>
+                        <div ref={lastElementRef} key={product.id} onClick={() => onClickProduct(product.id)} className='flex flex-col items-center gap-2 bg-white rounded-[5px] overflow-hidden cursor-pointer'>
                             <div className='flex'>
                                 <img className='w-full h-[150px]' src={product.images[0]} />
                             </div>
