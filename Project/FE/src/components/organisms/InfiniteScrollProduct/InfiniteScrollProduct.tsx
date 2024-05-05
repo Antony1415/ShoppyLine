@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useRef } from 'react'
 import { Product } from '@/utils/type';
+import { useRouter } from 'next/navigation'
 
 export interface InfiniteScrollProductProps<T extends Product> {
     className?: string;
@@ -9,6 +10,7 @@ export interface InfiniteScrollProductProps<T extends Product> {
 }
 
 const InfiniteScrollProduct = <T extends Product>({ className, data, callback }: InfiniteScrollProductProps<T>): React.JSX.Element => {
+    const router = useRouter()
     const lastElementRef = useRef<HTMLParagraphElement>(null)
 
     useEffect(() => {
@@ -24,8 +26,8 @@ const InfiniteScrollProduct = <T extends Product>({ className, data, callback }:
         }
     }, [data])
 
-    const onClickProduct = () => {
-        
+    const onClickProduct = (productId: string) => {
+        router.push(`/product/${productId}`)
     }
 
     return (
@@ -33,7 +35,7 @@ const InfiniteScrollProduct = <T extends Product>({ className, data, callback }:
             {data.map((product, index) => {
                 if (data.length - 1 === index) {
                     return (
-                        <div ref={lastElementRef} key={product.id} onClick={onClickProduct} className='flex flex-col items-center gap-2 bg-white rounded-[5px] overflow-hidden'>
+                        <div ref={lastElementRef} key={product.id} onClick={() => onClickProduct(product.id)} className='flex flex-col items-center gap-2 bg-white rounded-[5px] overflow-hidden'>
                             <div className='flex'>
                                 <img className='w-full h-[150px]' src={product.images[0]} />
                             </div>
@@ -45,7 +47,7 @@ const InfiniteScrollProduct = <T extends Product>({ className, data, callback }:
                     )
                 }
                 return (
-                    <div key={product.id} onClick={onClickProduct} className='flex flex-col gap-2 bg-white rounded-[5px] overflow-hidden'>
+                    <div key={product.id} onClick={() => onClickProduct(product.id)} className='flex flex-col gap-2 bg-white rounded-[5px] overflow-hidden cursor-pointer'>
                         <img className='w-full h-[150px]' src={product.images[0]} />
 
                         <div className='flex flex-col gap-1 px-3 pb-2'>

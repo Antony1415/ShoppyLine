@@ -15,8 +15,6 @@ export const modalSlice = createSlice({
     initialState,
     reducers: {
         setShowModal: (state, action: PayloadAction<boolean>) => {
-            console.log("PAY", action.payload);
-            
             state.showModal = action.payload
         }
     },

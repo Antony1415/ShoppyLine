@@ -39,18 +39,22 @@ const ImageCarrousel = ({ className, data, autoSlide = false, delay = 3000 }: Im
 
     return (
         <div className={`${className} relative w-full h-full`}>
-            <Icon
-                className={`${styles.ImageCarrousel_button} ${styles.ImageCarrousel_button___leftArrow}`}
-                size={{ width: 10, height: 15 }}
-                src='/assets/svg/right_arrow.svg'
-                onClick={showPrevImage}
-            />
-            <Icon
-                className={`${styles.ImageCarrousel_button} ${styles.ImageCarrousel_button___rightArrow}`}
-                size={{ width: 10, height: 15 }}
-                src='/assets/svg/right_arrow.svg'
-                onClick={showNextImage}
-            />
+            {data.length > 1 && (
+                <>
+                    <Icon
+                        className={`${styles.ImageCarrousel_button} ${styles.ImageCarrousel_button___leftArrow}`}
+                        size={{ width: 10, height: 15 }}
+                        src='/assets/svg/right_arrow.svg'
+                        onClick={showPrevImage}
+                    />
+                    <Icon
+                        className={`${styles.ImageCarrousel_button} ${styles.ImageCarrousel_button___rightArrow}`}
+                        size={{ width: 10, height: 15 }}
+                        src='/assets/svg/right_arrow.svg'
+                        onClick={showNextImage}
+                    />
+                </>
+            )}
 
             <div className='flex h-full w-full overflow-hidden'>
                 {data.map((item, index) => {
@@ -72,6 +76,7 @@ const ImageCarrousel = ({ className, data, autoSlide = false, delay = 3000 }: Im
                     )
                 })}
             </div>
+
         </div >
     )
 }

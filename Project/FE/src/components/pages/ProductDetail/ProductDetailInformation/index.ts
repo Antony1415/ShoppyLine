@@ -1,0 +1,1 @@
+export { default as ProductDetailInformation } from './ProductDetailInformation'

@@ -61,7 +61,7 @@ const MainLayoutHeader = () => {
             </div>
 
             {user ? (
-                <div className='flex-[1] flex gap-5 h-full'>
+                <div className='flex-[1] flex gap-5'>
                     <Button className='ml-auto' onClick={() => { dispatch(setShowModal(true)) }}>
                         <Text type='span' text={user.fullName} />
                     </Button>
@@ -70,7 +70,7 @@ const MainLayoutHeader = () => {
                     </Button>
                 </div >
             ) : (
-                <div className='flex-[1] flex gap-5 h-full'>
+                <div className='flex-[1] flex gap-5'>
                     <Button className='ml-auto' onClick={() => { dispatch(setShowModal(true)) }}>
                         <Text type='span' text='MASUK' />
                     </Button>

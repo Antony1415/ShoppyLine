@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect } from 'react'
-import { MainLayoutHeader } from '@/components/organisms'
+import { MainLayoutHeader, MainLayoutFooter } from '@/components/organisms'
 import { useAppDispatch } from '@/redux-toolkit';
 import { setShowModal } from '@/redux-toolkit/modal/modalSlice';
 
@@ -16,9 +16,10 @@ const MainLayout = ({ children }: MainLayoutProps): React.JSX.Element => {
     }, [])
 
     return (
-        <div className='flex flex-col h-fit bg-[#f1f2f2] gap-5'>
+        <div className='flex flex-col h-fit bg-[#f1f2f2] gap-7'>
             <MainLayoutHeader />
             {children}
+            <MainLayoutFooter />
         </div>
     )
 }

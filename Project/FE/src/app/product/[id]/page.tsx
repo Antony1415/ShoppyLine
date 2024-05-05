@@ -1,20 +1,27 @@
 import React from 'react'
-import { useRouter } from 'next/router'
+import { MainLayout } from '@/components/layouts';
+import { ProductDetailCarrousel, ProductDetailInformation } from '@/components/pages';
+import { Product } from '@/utils/type';
 
-const page = ({ params }: { params: { slug: string } }) => {
-  console.log("slug: ", params);
-  
+async function getBestSellerProduct(productId: string) {
+  const res = await fetch(`https://dummyjson.com/products/${productId}`);
+
+  return res.json();
+}
+
+const page = async ({ params }: { params: { id: string } }) => {
+  const product: Product = await getBestSellerProduct(params.id);
+  console.log("product: ", product);
+
   return (
-    <div className='flex flex-col gap-[100px] py-[500px]'>
-      <div className='bg-red-500 w-[500px] h-[500px] sticky ml-auto top-0'>
+    <MainLayout>
+      <div className='mx-20 bg-white rounded-[2px] px-5 pt-5 pb-6 h-full'>
+        <div className='flex gap-10 h-full w-full'>
+          <ProductDetailCarrousel images={product.images} />
+          <ProductDetailInformation product={product} />
+        </div>
       </div>
-      <div className='bg-red-500 w-[500px] h-[500px]'>
-
-      </div>
-      <div className='bg-red-500 w-[500px] h-[500px]'>
-
-      </div>
-    </div>
+    </MainLayout>
   )
 }
 
