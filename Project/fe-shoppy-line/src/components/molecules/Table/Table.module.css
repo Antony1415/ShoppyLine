@@ -1,0 +1,31 @@
+.Table {
+    width: 100%;
+    overflow: auto;
+    border-spacing: 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.Table tr {
+    border: 1px solid #D3D3D3;
+}
+
+.Table thead td,
+.Table tbody td {
+    padding: 14px 0;
+    text-align: left;
+}
+
+/* table padding */
+.Table thead td:first-child,
+.Table tbody td:first-child {
+    padding-left: 15px;
+}
+
+.Table thead td:last-child,
+.Table tbody td:last-child {
+    padding-right: 10px;
+}
+
+.Table tbody {
+    height: 100%;
+}

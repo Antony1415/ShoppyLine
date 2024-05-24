@@ -1,7 +1,7 @@
 import React from 'react'
-import { MainLayout } from '@/components/layouts';
 import { ProductDetailCarrousel, ProductDetailInformation } from '@/components/pages';
 import { Product } from '@/utils/type';
+import { MainLayout } from '@/components/layouts';
 
 export async function generateStaticParams() {
   const response = await fetch(`https://dummyjson.com/products`)

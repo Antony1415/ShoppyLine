@@ -1,4 +1,4 @@
-import { MainLayout } from '@/components/layouts'
+import { MainLayout } from '@/components/layouts';
 import { AuthModal, HomeBanner, HomeBestSellerProduct, HomeRecommendedProduct } from '@/components/pages'
 import { Product } from '@/utils/type';
 import React from 'react'
