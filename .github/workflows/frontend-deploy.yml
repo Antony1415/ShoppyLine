@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./Project/FE
+        working-directory: ./Project/fe-shoppy-line
     steps:
       # git clone current Repository to Cloud Computing Folder
       - name: Clone Main to Github CI/CD Folder
