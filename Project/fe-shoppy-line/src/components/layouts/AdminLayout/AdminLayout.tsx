@@ -1,14 +1,18 @@
-import React from 'react'
+"use client"
+import { Sidebar } from '@/components/organisms';
+import { AdminContent } from '@/components/pages';
+import React, { useState } from 'react'
 
-export interface AdminLayoutProps {
-    children?: React.ReactNode;
-}
+const AdminLayout = (): React.JSX.Element => {
+    const [menu, setMenu] = useState<string>("product");
 
-const AdminLayout = ({ children }: AdminLayoutProps): React.JSX.Element => {
     return (
-        <div>
-            ADMIN
-            {children}
+        <div className='flex bg-sky-100/30 w-full h-full'>
+            <Sidebar menu={menu} setMenu={setMenu} />
+
+            <div className='flex-[8.7] bg-white px-8 py-5'>
+                <AdminContent menu={menu} />
+            </div>
         </div>
     )
 }

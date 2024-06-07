@@ -1,19 +1,20 @@
 'use client'
 import React, { useCallback, useState } from 'react'
-import Checkbox from '@mui/material/Checkbox';
 import styles from './Table.module.css'
 import { TableBody, TableHeader } from '@/components/atoms';
 
 export interface TableProps<T> {
     header: T[];
     body: any[];
-    className?: string
+    className?: string;
+    checkbox?: boolean;
 }
 
 const Table = <T extends { id: string, label: string }>({
     header,
     body,
-    className
+    className,
+    checkbox = false
 }: TableProps<T>): React.JSX.Element => {
     const [checkedRows, setCheckedRows] = useState<string[]>([])
 
@@ -45,6 +46,7 @@ const Table = <T extends { id: string, label: string }>({
                 header={header}
                 onCheckAll={onCheckAll}
                 checked={checkedRows.length === body.length}
+                checkbox={checkbox}
             />
 
             <TableBody<T>
@@ -52,6 +54,7 @@ const Table = <T extends { id: string, label: string }>({
                 header={header}
                 onCheckSingle={onCheckSingle}
                 checked={checkedRows}
+                checkbox={checkbox}
             />
         </table>
     )

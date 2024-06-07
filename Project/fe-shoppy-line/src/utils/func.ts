@@ -16,3 +16,8 @@ export const handleClickOutsideComponent = (selectRef: any, valCb: boolean, func
         document.removeEventListener("mousedown", checkIfClickedOutside);
     };
 };
+
+export const handleSearch = <T extends string, K extends string>(category1: T, category2: K): boolean => {
+    console.log("AKAKA", category1, category2);
+    return category1.toLowerCase().includes(category2.toLowerCase());
+}

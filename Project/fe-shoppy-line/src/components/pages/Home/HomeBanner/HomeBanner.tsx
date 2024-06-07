@@ -4,16 +4,16 @@ import { ImageCarrousel } from '@/components/atoms'
 const HomeBanner = () => {
   
   const imagesCarrousel = [
-    'assets/png/banner_3.jpg',
-    'assets/png/banner_2.jpg',
-    'assets/png/banner_4.jpg',
-    'assets/png/banner_1.jpg',
-    'assets/png/banner_5.jpg',
+    'assets/banner/banner_3.jpg',
+    'assets/banner/banner_2.jpg',
+    'assets/banner/banner_4.jpg',
+    'assets/banner/banner_1.jpg',
+    'assets/banner/banner_5.jpg',
   ]
 
-  const imagesBannerA = 'assets/png/banner_7.jpg'
+  const imagesBannerA = 'assets/banner/banner_7.jpg'
 
-  const imagesBannerB = 'assets/png/banner_6.png'
+  const imagesBannerB = 'assets/banner/banner_6.png'
 
   return (
     <div className='flex shrink-0 h-[300px] w-full gap-3 rounded-[3px] overflow-hidden'>

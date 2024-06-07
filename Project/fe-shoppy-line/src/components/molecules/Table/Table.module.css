@@ -11,19 +11,19 @@
 
 .Table thead td,
 .Table tbody td {
-    padding: 14px 0;
+    padding: 10px 0;
     text-align: left;
 }
 
 /* table padding */
 .Table thead td:first-child,
 .Table tbody td:first-child {
-    padding-left: 15px;
+    padding-left: 20px;
 }
 
 .Table thead td:last-child,
 .Table tbody td:last-child {
-    padding-right: 10px;
+    padding-right: 15px;
 }
 
 .Table tbody {
