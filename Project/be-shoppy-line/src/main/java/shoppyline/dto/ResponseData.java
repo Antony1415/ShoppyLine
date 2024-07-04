@@ -18,4 +18,9 @@ public class ResponseData<T> {
     private HttpStatus status;
     private List<String> messages = new ArrayList<>();
     private T payload;
+
+    public ResponseData(HttpStatus status, T payload) {
+        this.status = status;
+        this.payload = payload;
+    }
 }

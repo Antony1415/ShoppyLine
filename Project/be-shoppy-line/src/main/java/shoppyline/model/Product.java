@@ -5,8 +5,10 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "products")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,10 +38,17 @@ public class Product {
     private Double price;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProductImage> productImage;
 
     public Product(String name, String description, Double price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
+    public Product(Long id, String name, String description, Double price) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;

@@ -2,20 +2,21 @@
 import React, { useCallback, useState } from 'react'
 import styles from './Table.module.css'
 import { TableBody, TableHeader } from '@/components/atoms';
+import { TableHeaderType } from '@/components/atoms/Table/TableHeader/TableHeader';
 
-export interface TableProps<T> {
-    header: T[];
-    body: any[];
+export interface TableProps<THead extends TableHeaderType> {
+    header: THead[];
+    body: any;
     className?: string;
     checkbox?: boolean;
 }
 
-const Table = <T extends { id: string, label: string }>({
+const Table = <THead extends TableHeaderType>({
     header,
     body,
     className,
     checkbox = false
-}: TableProps<T>): React.JSX.Element => {
+}: TableProps<THead>): React.JSX.Element => {
     const [checkedRows, setCheckedRows] = useState<string[]>([])
 
     const onCheckSingle = useCallback((id: string) => {
@@ -32,24 +33,24 @@ const Table = <T extends { id: string, label: string }>({
         let value: string[]
 
         if (checkedRows.length > 0) {
-            value = checkedRows.length === body.length ? [] : Array.from(body, (item) => item.id)
+            value = checkedRows.length === body.length ? [] : Array.from(body, (item: { id: any }) => item.id)
             return setCheckedRows(value)
         }
 
-        value = Array.from(body, (item) => item.id)
+        value = Array.from(body, (item: { id: any }) => item.id)
         setCheckedRows(value)
     }, [checkedRows])
 
     return (
         <table className={`${styles.Table} ${className}`}>
-            <TableHeader<T>
+            <TableHeader<THead>
                 header={header}
                 onCheckAll={onCheckAll}
                 checked={checkedRows.length === body.length}
                 checkbox={checkbox}
             />
 
-            <TableBody<T>
+            <TableBody<THead>
                 data={body}
                 header={header}
                 onCheckSingle={onCheckSingle}

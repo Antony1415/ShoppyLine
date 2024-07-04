@@ -8,7 +8,12 @@ export interface TableHeaderProps<T> {
     checkbox?: boolean;
 }
 
-const TableHeader = <T extends { id: string, label: string }>({
+export type TableHeaderType = {
+    id: string;
+    label?: string;
+}
+
+const TableHeader = <T extends TableHeaderType>({
     header,
     onCheckAll,
     checked,

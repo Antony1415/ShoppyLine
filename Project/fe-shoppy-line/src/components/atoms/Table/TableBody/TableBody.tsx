@@ -2,22 +2,27 @@
 import { Checkbox } from '@mui/material'
 import React from 'react'
 import { Icon } from '@/components/atoms';
+import { TableHeaderType } from '../TableHeader/TableHeader';
 
-export interface TableBodyProps<T> {
-    header: T[];
-    data: any;
+type TableBodyType = {
+    [key: string]: any
+}
+
+export interface TableBodyProps<THead extends TableHeaderType> {
+    header: THead[];
+    data: TableBodyType[];
     onCheckSingle?: (id: string) => void;
     checked: string[];
     checkbox?: boolean;
 }
 
-const TableBody = <T extends { id: string, label: string }>({
+const TableBody = <THead extends TableHeaderType>({
     header,
     data,
     onCheckSingle,
     checked,
     checkbox
-}: TableBodyProps<T>): React.JSX.Element => {
+}: TableBodyProps<THead>): React.JSX.Element => {
     const onEditRow = (index: number) => {
         alert("Index: " + index)
     }
@@ -32,7 +37,7 @@ const TableBody = <T extends { id: string, label: string }>({
 
     return (
         <tbody className='text-[12px]'>
-            {data.map((body: any, index: number) => {
+            {data.map((body: TableBodyType, index: number) => {
                 return (
                     <tr key={index}>
                         {checkbox && (
@@ -45,7 +50,7 @@ const TableBody = <T extends { id: string, label: string }>({
                             </td>
                         )}
 
-                        {header.map((head: T) => {
+                        {header.map((head: THead) => {
                             if (head.id === "action") {
                                 return (
                                     <td key={head.id}>

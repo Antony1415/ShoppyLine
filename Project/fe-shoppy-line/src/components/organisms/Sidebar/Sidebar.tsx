@@ -28,7 +28,7 @@ const Sidebar = ({
                 <div className='flex-1 flex flex-col w-full gap-6'>
                     {adminMenu.map((item: AdminMenuType) => {
                         return (
-                        <div className='flex relative px-8 items-center py-[5px]' key={item.id}>
+                            <div className='flex relative px-8 items-center py-[5px]' key={item.id}>
                                 {menu === item.id && <div className='absolute left-0 h-full w-fit border-[1px] border-green-600/90 border-r-0 border-l-[7px] border-t-[3px] border-b-[3px] border-t-transparent border-b-transparent' />}
 
                                 <Button className={`flex items-center !p-0 !border-0 gap-5`} onClick={() => setMenu(item.id)}>

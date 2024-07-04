@@ -1,7 +1,6 @@
 package shoppyline.security;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,11 +11,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -35,17 +30,14 @@ public class WebSecurity {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // if use hasAuthority(), then we need use attribute UserDetails
-        // user.getAuthrotities()
+        // if use hasAuthority(), then we need use attribute UserDetails user.getAuthrotities()
         // .requestMatchers("/something").hasRole("USER")
         // if use hasRole(), then we need use attribute UserDetails user.roles()
         // .requestMatchers("/something").hasRole("USER")
 
-        // Notes: if use implements from UserDetails, we should override and use
-        // attribute authorities
+        // Notes: if use implements from UserDetails, we should override and use attribute authorities
         // authorities("ROLE_USER") is equivalent to hasRole("USER") and
-        // hasAuthority("ROLE_USER")
-        // hasRole() need add prefix "ROLE_" to user.getAuthorities()
+        // hasAuthority("ROLE_USER") | hasRole() need add prefix "ROLE_" to user.getAuthorities()
 
         return http
                 .cors(Customizer.withDefaults())

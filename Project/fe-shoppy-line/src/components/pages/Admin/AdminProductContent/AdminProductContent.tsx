@@ -1,13 +1,21 @@
 "use client"
 import React, { useMemo, useState } from 'react'
 import { Table } from '@/components/molecules'
-import { dummyBody, dummyHead } from '@/components/molecules/Table/DummyTable'
-import { Button, InputSearch, Text } from '@/components/atoms'
+import { dummyBody, dummyHead, DummyHeadType } from '@/components/molecules/Table/DummyTable'
+import { Button, Dropdown, InputSearch, Text } from '@/components/atoms'
 import Image from 'next/image'
 import { handleSearch } from '@/utils/func'
 
 const AdminProductContent = () => {
+    const dummyDropdown = [
+        { value: "0", label: "None" },
+        { value: "10", label: "Ten" },
+        { value: "20", label: "Twenty" },
+        { value: "30", label: "Thirty" },
+    ]
+
     const [searchProduct, setSearchProduct] = useState<string>('');
+    const [filterProduct, setFilterProduct] = useState<string>(dummyDropdown[0].value);
 
     // frontend handle search feature. if backend, just hit an API and get the filtered data.
     const dummyProductBody = useMemo(() => {
@@ -25,19 +33,21 @@ const AdminProductContent = () => {
                 </div>
 
                 <div className='flex-[3] flex gap-10'>
-                    <Button className='px-6 py-[15px] gap-5 ml-auto' onClick={() => alert("Add Product!")}>
-                        <Text text='Add Product' className='text-[18px] font-semibold' />
-                        <Image alt='' src={'/assets/svg/create_plus_icon.svg'} width={25} height={25} />
-                    </Button>
+                    <Dropdown
+                        value={filterProduct}
+                        options={dummyDropdown}
+                        onChange={(val) => setFilterProduct(val)}
+                        className=''
+                    />
 
                     <Button className='px-6 py-[15px] gap-5' onClick={() => alert("Add Product!")}>
-                        <Text text='Add Product' className='text-[18px] font-semibold' />
-                        <Image alt='' src={'/assets/svg/create_plus_icon.svg'} width={25} height={25} />
+                        <Text text='Add Product' className='text-[16px] font-semibold' />
+                        <Image alt='' src={'/assets/svg/create_plus_icon.svg'} width={20} height={20} />
                     </Button>
                 </div>
             </div>
 
-            <Table<any> body={dummyProductBody} header={dummyHead} checkbox={true} />
+            <Table<DummyHeadType> body={dummyProductBody} header={dummyHead} checkbox={true} />
         </div>
     )
 }
